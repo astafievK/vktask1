@@ -1,0 +1,267 @@
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes shimmer-animation {
+  0% {
+    left: -33%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+@keyframes dot-scale-fade {
+  0% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0;
+    transform: scale(3);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(3);
+  }
+}
+#root {
+  width: 100%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 2rem;
+  text-align: center;
+}
+#root .filters {
+  display: flex;
+  flex-direction: row;
+  gap: 10rem;
+}
+#root .filters .filters-elem {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+#root .filters .filters-elem .filter-title {
+  font-weight: 600;
+  font-size: 20px;
+}
+#root .filters .filters-elem .filters-elem__group {
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+}
+#root .filters .filters-elem .filters-elem__group .group-title {
+  font-weight: 600;
+  font-size: 16px;
+}
+#root .filters .filters-elem .filters-elem__group .form {
+  display: flex;
+  gap: 8px;
+  margin-left: 24px;
+}
+#root .filters .filters-elem .filters-elem__group .form .filter input[type=radio] {
+  display: none;
+}
+#root .filters .filters-elem .filters-elem__group .form .filter input[type=radio]:checked + label {
+  border-color: #FF7700;
+}
+#root .filters .filters-elem .filters-elem__group .form .filter label {
+  padding: 4px 8px;
+  cursor: pointer;
+  background: #F7F4F2;
+  border: 1px solid #F7F4F2;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 400;
+  user-select: none;
+}
+#root .content-group {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 16px;
+  padding: 24px 192px;
+  margin-top: 3rem;
+}
+#root .content-group .counter-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ff7700;
+  border-radius: 16px;
+  border: 2px solid #fff;
+  cursor: pointer;
+  font-size: 13px;
+  line-height: 13px;
+  color: #FFF;
+  overflow: hidden;
+  text-wrap: nowrap;
+  text-overflow: ellipsis;
+  transition: scale 500ms, background-color 200ms;
+}
+#root .content-group .counter-btn .content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+#root .content-group .counter-btn .content .counter {
+  position: relative;
+  aspect-ratio: 1/1;
+  display: flex;
+  align-items: center;
+  margin-left: 9px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+}
+#root .content-group .counter-btn .content .counter .dot {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+}
+#root .content-group .counter-btn .content .counter .pulse {
+  top: 0;
+  left: 0;
+  position: absolute;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  animation-name: dot-scale-fade;
+  animation-iteration-count: infinite;
+  animation-duration: 2s;
+}
+#root .content-group .counter-btn .content .counter .pulse.second {
+  animation-delay: 0.25s;
+}
+#root .content-group .counter-btn .content .counter.size-8 {
+  height: 8px;
+  width: 8px;
+}
+#root .content-group .counter-btn .content .counter.size-12 {
+  height: 12px;
+  width: 12px;
+}
+#root .content-group .counter-btn .content .counter.size-16 {
+  min-height: 16px;
+  padding: 0 4px;
+}
+#root .content-group .counter-btn .content .counter.size-16 .dot {
+  font-size: 11px;
+}
+#root .content-group .counter-btn .content .counter.size-20 {
+  min-height: 20px;
+  padding: 0 4px;
+}
+#root .content-group .counter-btn .content .counter.size-20 .dot {
+  font-size: 13px;
+}
+#root .content-group .counter-btn .content .counter.size-24 {
+  min-height: 24px;
+  padding: 0 6px;
+}
+#root .content-group .counter-btn .content .counter.size-24 .dot {
+  font-size: 15px;
+}
+#root .content-group .counter-btn .overlay {
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  transition: opacity 500ms;
+}
+#root .content-group .counter-btn .loader-circle {
+  position: absolute;
+  border: 2px solid white;
+  border-radius: 50%;
+  border-bottom-color: transparent;
+  animation-name: spin;
+  animation-duration: 1000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+#root .content-group .counter-btn .shimmer {
+  position: absolute;
+  top: 0;
+  left: -33.3333333333%;
+  height: 100%;
+  width: 33.3333333333%;
+  background: linear-gradient(to left, transparent, rgba(255, 255, 255, 0.15), transparent);
+  animation: shimmer-animation 1s linear infinite;
+}
+#root .content-group .counter-btn.loading .content {
+  opacity: 0;
+}
+#root .content-group .counter-btn.size-28 {
+  padding: 6px 10px;
+  gap: 4px;
+  font-size: 13px;
+}
+#root .content-group .counter-btn.size-28 .loader-circle {
+  width: 16px;
+  height: 16px;
+}
+#root .content-group .counter-btn.size-36 {
+  padding: 8px 12px;
+  gap: 6px;
+  font-size: 15px;
+}
+#root .content-group .counter-btn.size-36 .loader-circle {
+  width: 20px;
+  height: 20px;
+}
+#root .content-group .counter-btn.size-56 {
+  padding: 16px;
+  gap: 8px;
+  font-size: 17px;
+}
+#root .content-group .counter-btn.size-56 .loader-circle {
+  width: 24px;
+  height: 24px;
+}
+#root .content-group .counter-btn:hover {
+  scale: 1.05;
+}
+#root .content-group .counter-btn:hover .overlay {
+  opacity: 0.12;
+}
+#root .content-group .counter-btn:active {
+  scale: 0.95;
+}
+#root .content-group .counter-btn:active .overlay {
+  opacity: 0.2;
+}
+#root .content-group .counter-btn:focus-visible {
+  outline: 2px solid #0099FF;
+}
+#root .content-group.color-secondary .counter-btn {
+  background: rgba(131, 102, 86, 0.12);
+  color: #2E2F33;
+}
+#root .content-group.color-secondary .counter-btn .content .counter {
+  background: rgba(131, 102, 86, 0.12);
+}
+#root .content-group.color-secondary .counter-btn .content .counter .pulse {
+  background: rgba(255, 255, 255, 0.5);
+}
+#root .content-group.color-secondary .counter-btn .loader-circle {
+  border: 2px solid #2E2F33;
+  border-bottom-color: transparent;
+}
+#root .content-group.color-secondary .counter-btn .shimmer {
+  background: linear-gradient(to left, transparent, rgba(0, 0, 0, 0.15), transparent);
+}
+#root .content-group.color-secondary .counter-btn:hover {
+  background: rgba(131, 102, 86, 0.25);
+}
+
+/*# sourceMappingURL=App.css.map */
