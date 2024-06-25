@@ -1,19 +1,20 @@
-import {FC, useEffect, useState} from "react";
-import Counter from "./Counter.tsx";
+import {useEffect, useState} from "react";
+import {Counter} from "./Counter.tsx";
+import {Loading} from "./Loading.tsx";
+import appState from "../store.tsx";
+import {observer} from "mobx-react";
 
-interface CounterButtonProps{
-    buttonSize: number
-    counterSize: number
-    isPulseAnimationActive: boolean
-}
+export const CounterButton = observer(() => {
+    const {
+        buttonSize,
+    } = appState;
 
-export const CounterButton: FC<CounterButtonProps> = (props) => {
     const [isLoading, setIsLoading] = useState(false);
     const [count, setCount] = useState(1)
 
     const handleButtonClick = () => {
         setIsLoading(true)
-        setCount(count + 1);
+        setCount(count => count + 1);
     }
 
     const handleKeyPress = (event: KeyboardEvent) => {
@@ -33,23 +34,19 @@ export const CounterButton: FC<CounterButtonProps> = (props) => {
 
     return (
         <>
-            <button className={"counter-btn" + (isLoading ? " loading" : "") + ` size-${props.buttonSize}`}
+            <button className={"counter-btn" + (isLoading ? " loading" : "") + ` size-${buttonSize}`}
                     onClick={handleButtonClick}
                     disabled={isLoading}
             >
                 <div className="content">
                     <span className={"title"}>Что сделать</span>
-                    <Counter count={count} size={props.counterSize} isAnimationActive={props.isPulseAnimationActive}/>
+                    <Counter count={count}/>
                 </div>
                 <span className="overlay"></span>
                 {
-                    isLoading &&
-                    <>
-                        <div className="loader-circle"></div>
-                        <div className="shimmer"></div>
-                    </>
+                    isLoading && <Loading/>
                 }
             </button>
         </>
     )
-}
+})

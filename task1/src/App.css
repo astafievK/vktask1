@@ -21,11 +21,11 @@
   }
   50% {
     opacity: 0;
-    transform: scale(3);
+    transform: scale(1.7);
   }
   100% {
     opacity: 0;
-    transform: scale(3);
+    transform: scale(1.7);
   }
 }
 #root {
