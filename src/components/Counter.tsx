@@ -1,5 +1,5 @@
 import {FC} from "react";
-import appState from "../store.tsx";
+import appState from "../store.ts";
 import {observer} from "mobx-react";
 
 interface ICounterProps{

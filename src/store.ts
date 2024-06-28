@@ -6,6 +6,7 @@ class AppState {
     selectedStyle = 'primary';
     isAnimationActive = true;
     isContentGroupBorderEnabled = true;
+    isCounterVisibilityEnabled = true;
 
     constructor() {
         makeAutoObservable(this);
@@ -29,6 +30,10 @@ class AppState {
 
     setIsContentGroupBorderEnabled = (isEnabled: boolean) => {
         this.isContentGroupBorderEnabled = isEnabled;
+    }
+
+    setIsCounterVisibilityEnabled = (isEnabled: boolean) => {
+        this.isCounterVisibilityEnabled = isEnabled;
     }
 }
 

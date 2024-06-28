@@ -1,5 +1,5 @@
 import { observer } from 'mobx-react';
-import appState from "../store.tsx";
+import appState from "../store.ts";
 
 export const FilterContentGroup = observer(() => {
     const {

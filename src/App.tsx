@@ -1,8 +1,8 @@
 import './App.css';
-import {CounterButton} from "./components/Button.tsx";
+import {CounterButton} from "./components/CounterButton.tsx";
 import {FilterButton} from "./components/FilterButton.tsx";
 import {FilterCounter} from "./components/FilterCounter.tsx";
-import appState from "./store.tsx";
+import appState from "./store.ts";
 import {observer} from "mobx-react";
 import React from "react";
 import {FilterContentGroup} from "./components/FilterContentGroup.tsx";

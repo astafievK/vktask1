@@ -24,6 +24,7 @@ $secondary-background: rgba(131, 102, 86, 0.12);
     opacity: 0.5;
     transform: scale(1);
   }
+
   50% {
     opacity: 0;
     transform: scale(1.7);
@@ -157,13 +158,18 @@ $secondary-background: rgba(131, 102, 86, 0.12);
             height: 100%;
             border-radius: 50%;
             background: rgba(#fff, 0.5);
+            opacity: 0;
 
             animation-name: dot-scale-fade;
             animation-iteration-count: infinite;
             animation-duration: 2s;
 
+            &.first{
+              animation-delay: 0.5s;
+            }
+
             &.second{
-              animation-delay: 0.25s;
+              animation-delay: 0.75s;
             }
           }
 

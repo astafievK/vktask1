@@ -1,5 +1,5 @@
 import { observer } from 'mobx-react';
-import appState from "../store.tsx";
+import appState from "../store.ts";
 
 const data = [
     {
@@ -24,7 +24,9 @@ export const FilterCounter = observer(() => {
         counterSize,
         setCounterSize,
         isAnimationActive,
-        setIsAnimationActive
+        isCounterVisibilityEnabled,
+        setIsAnimationActive,
+        setIsCounterVisibilityEnabled
     } = appState;
 
     return (
@@ -64,6 +66,26 @@ export const FilterCounter = observer(() => {
                                    onChange={() => setIsAnimationActive(false)}
                             />
                             <label htmlFor={"counterPulseFalse"}>false</label>
+                        </p>
+                    </form>
+                </div>
+                <div className="filters-elem__group">
+                    <span className="group-title">Visibility</span>
+                    <form className={"form"}>
+                        <p className={"filter"}>
+                            <input type={"radio"} id={"counterVisibilityTrue"} value={'true'}
+                                   checked={isCounterVisibilityEnabled}
+                                   onChange={() => setIsCounterVisibilityEnabled(true)}
+                            />
+                            <label htmlFor={"counterVisibilityTrue"}>true</label>
+                        </p>
+
+                        <p className={"filter"}>
+                            <input type={"radio"} id={"counterVisibilityFalse"} value={'false'}
+                                   checked={!isCounterVisibilityEnabled}
+                                   onChange={() => setIsCounterVisibilityEnabled(false)}
+                            />
+                            <label htmlFor={"counterVisibilityFalse"}>false</label>
                         </p>
                     </form>
                 </div>

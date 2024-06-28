@@ -1,12 +1,13 @@
 import {useEffect, useState} from "react";
 import {Counter} from "./Counter.tsx";
 import {Loading} from "./Loading.tsx";
-import appState from "../store.tsx";
+import appState from "../store.ts";
 import {observer} from "mobx-react";
 
 export const CounterButton = observer(() => {
     const {
         buttonSize,
+        isCounterVisibilityEnabled
     } = appState;
 
     const [isLoading, setIsLoading] = useState(false);
@@ -17,8 +18,8 @@ export const CounterButton = observer(() => {
         setCount(count => count + 1);
     }
 
-    const handleKeyPress = (event: KeyboardEvent) => {
-        if (event.key.toLowerCase() === 'r') {
+    const handleKeyPress = (e: KeyboardEvent) => {
+        if (e.key.toLowerCase() === 'r' || e.key.toLowerCase() === 'к') {
             setIsLoading(false);
         }
     };
@@ -40,7 +41,9 @@ export const CounterButton = observer(() => {
             >
                 <div className="content">
                     <span className={"title"}>Что сделать</span>
-                    <Counter count={count}/>
+                    {
+                        isCounterVisibilityEnabled && <Counter count={count}/>
+                    }
                 </div>
                 <span className="overlay"></span>
                 {

@@ -135,12 +135,16 @@
   height: 100%;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.5);
+  opacity: 0;
   animation-name: dot-scale-fade;
   animation-iteration-count: infinite;
   animation-duration: 2s;
 }
+#root .content-group .counter-btn .content .counter .pulse.first {
+  animation-delay: 0.5s;
+}
 #root .content-group .counter-btn .content .counter .pulse.second {
-  animation-delay: 0.25s;
+  animation-delay: 0.75s;
 }
 #root .content-group .counter-btn .content .counter.size-8 {
   height: 8px;
